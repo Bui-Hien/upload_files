@@ -1,10 +1,9 @@
 import {NextResponse} from 'next/server';
 import {google} from 'googleapis';
 import {Readable} from 'stream';
-import {v4 as uuidv4} from 'uuid';  // Import uuid
+import {v4 as uuidv4} from 'uuid';
 import type {NextRequest} from 'next/server';
 
-// Authorization function
 async function authorize() {
     const jwtClient = new google.auth.JWT(
         process.env.GOOGLE_CLIENT_EMAIL!,
