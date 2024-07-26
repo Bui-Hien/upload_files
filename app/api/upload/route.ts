@@ -74,10 +74,24 @@ export async function POST(req: NextRequest) {
     try {
         const authClient = await authorize();
         const fileBuffer = Buffer.from(await file.arrayBuffer());
-        const {fileId, fileLink} = await uploadFile(authClient, fileBuffer, randomFileName, file.type); // Use randomFileName for upload
-        return NextResponse.json({fileLink});
+        const {fileId, fileLink} = await uploadFile(authClient, fileBuffer, randomFileName, file.type);
+        const response = NextResponse.json({fileLink});
+
+        // Add CORS headers
+        response.headers.set('Access-Control-Allow-Origin', '*'); // Allow all origins, modify as needed
+        response.headers.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+        response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+        return response;
     } catch (error) {
         const errorMessage = isErrorWithMessage(error) ? error.message : 'Unknown error occurred';
-        return NextResponse.json({error: errorMessage}, {status: 500});
+        const response = NextResponse.json({error: errorMessage}, {status: 500});
+
+        // Add CORS headers
+        response.headers.set('Access-Control-Allow-Origin', '*'); // Allow all origins, modify as needed
+        response.headers.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+        response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+        return response;
     }
 }

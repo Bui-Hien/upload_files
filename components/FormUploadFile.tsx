@@ -49,15 +49,15 @@ const FormUploadFile = () => {
             const formData = new FormData();
             formData.append("file", values.file as File);
 
-            const response = await axios.post("/api/upload", formData, {
+            const response = await axios.post("https://66a3f4b5091a370008ee55ef--hienuploadfiles.netlify.app/api/upload", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
             });
             setLinkFile(response.data.fileLink)
-            // toast.success("File uploaded successfully");
+            toast.success("File uploaded successfully");
         } catch (err) {
-            // toast.error("Error uploading file!");
+            toast.error("Error uploading file!");
         }
     };
 
