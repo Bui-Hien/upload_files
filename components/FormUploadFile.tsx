@@ -25,13 +25,13 @@ const formSchema = z.object({
 });
 
 const FormUploadFile = () => {
-    // const [baseUrl, setBaseUrl] = useState<string>('');
+    const [baseUrl, setBaseUrl] = useState<string>('');
     const [sub, setSub] = useState<boolean>(false);
-    //
-    // useEffect(() => {
-    //     const currentUrl = window.location.origin;
-    //     setBaseUrl(currentUrl);
-    // }, []);
+
+    useEffect(() => {
+        const currentUrl = window.location.origin;
+        setBaseUrl(currentUrl);
+    }, []);
     const [linkFile, setLinkFile] = useState<string>("")
     // 1. Define your form.
     const form = useForm<z.infer<typeof formSchema>>({
@@ -63,7 +63,7 @@ const FormUploadFile = () => {
 
     return (
         <div className={"w-[300px]"}>
-            {/*<CopyButton textToCopy={`${baseUrl}/api/upload`}/>*/}
+            <CopyButton textToCopy={`${baseUrl}/api/upload`}/>
             <Form {...form}>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 w-[300px]">
                     <FormField
@@ -102,9 +102,9 @@ const FormUploadFile = () => {
                     </Button>
                 </form>
             </Form>
-            {/*<div className="pt-4">*/}
-            {/*    <CopyButton textToCopy={linkFile}/>*/}
-            {/*</div>*/}
+            <div className="pt-4">
+                <CopyButton textToCopy={linkFile}/>
+            </div>
         </div>
     )
         ;
