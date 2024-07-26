@@ -26,6 +26,7 @@ const formSchema = z.object({
 
 const FormUploadFile = () => {
     const [baseUrl, setBaseUrl] = useState<string>('');
+    const [sub, setSub] = useState<boolean>(false);
 
     useEffect(() => {
         const currentUrl = window.location.origin;
@@ -78,16 +79,23 @@ const FormUploadFile = () => {
                                         type="file"
                                         accept=".jpg,.jpeg,.png,.pdf,.txt"
                                         onChange={(e) => {
-                                            const file = e.target.files ? e.target.files[0] : null;
+
+                                            const file = e.target.files ? e.target.files[0] : undefined;
+                                            if (!!file) {
+                                                setSub(true);
+                                            } else {
+                                                setSub(false)
+                                            }
                                             setValue("file", file || undefined);
-                                        }}
+                                        }
+                                        }
                                     />
                                 </FormControl>
                                 <FormMessage/>
                             </FormItem>
                         )}
                     />
-                    <Button type="submit" disabled={!isValid || isSubmitting}>
+                    <Button type="submit" disabled={!sub}>
                         {isSubmitting ? (
                             <Loader2 className="h-4 w-4 animate-spin"/>
                         ) : (
@@ -100,7 +108,8 @@ const FormUploadFile = () => {
                 <CopyButton textToCopy={linkFile}/>
             </div>
         </div>
-    );
+    )
+        ;
 };
 
 export default FormUploadFile;
