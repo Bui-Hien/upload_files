@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d87b986e-abd8-4e97-b5cb-1ad4d5d79fa7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/FormUploadFile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/FormUploadFile.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +64,7 @@
       <option name="presentableId" value="Default" />
       <updated>1722006913037</updated>
       <workItem from="1722006914122" duration="10027000" />
-      <workItem from="1722017108018" duration="3662000" />
+      <workItem from="1722017108018" duration="3861000" />
     </task>
     <servers />
   </component>
