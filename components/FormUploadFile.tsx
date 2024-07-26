@@ -17,7 +17,7 @@ import {
 import {Input} from "@/components/ui/input";
 import axios from "axios";
 import {Loader2} from "lucide-react";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import CopyButton from "@/components/CopyButton";
 
 const formSchema = z.object({
@@ -25,6 +25,12 @@ const formSchema = z.object({
 });
 
 const FormUploadFile = () => {
+    const [baseUrl, setBaseUrl] = useState<string>('');
+
+    useEffect(() => {
+        const currentUrl = window.location.origin;
+        setBaseUrl(currentUrl);
+    }, []);
     const [linkFile, setLinkFile] = useState<string>("")
     // 1. Define your form.
     const form = useForm<z.infer<typeof formSchema>>({
@@ -58,6 +64,7 @@ const FormUploadFile = () => {
 
     return (
         <div className={"w-[300px]"}>
+            <CopyButton textToCopy={`${baseUrl}/api/upload`}/>
             <Form {...form}>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 w-[300px]">
                     <FormField
