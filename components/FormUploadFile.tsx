@@ -55,9 +55,9 @@ const FormUploadFile = () => {
                 },
             });
             setLinkFile(response.data.fileLink)
-            toast.success("File uploaded successfully");
+            // toast.success("File uploaded successfully");
         } catch (err) {
-            toast.error("Error uploading file!");
+            // toast.error("Error uploading file!");
         }
     };
 

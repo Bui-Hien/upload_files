@@ -1,3 +1,4 @@
+"use client"
 import FormUploadFile from "@/components/FormUploadFile";
 
 export default function Home() {
