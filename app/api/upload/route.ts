@@ -15,10 +15,8 @@ async function authorize() {
 
     try {
         await jwtClient.authorize();
-        console.log('Google API Client authorized');
         return jwtClient;
     } catch (error) {
-        console.error('Authorization error:', error);
         throw new Error('Failed to authorize with Google API');
     }
 }
@@ -51,10 +49,8 @@ async function uploadFile(authClient: any, fileBuffer: Buffer, filename: string,
         });
         const fileId = response.data.id;
         const fileLink = `https://drive.google.com/file/d/${fileId}/view`;
-        console.log('File uploaded successfully. File link:', fileLink);
         return {fileId, fileLink};
     } catch (error) {
-        console.error('File upload error:', error);
         throw new Error('Failed to upload file to Google Drive');
     }
 }
@@ -84,7 +80,6 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({fileLink});
     } catch (error) {
         const errorMessage = isErrorWithMessage(error) ? error.message : 'Unknown error occurred';
-        console.error('Request processing error:', errorMessage);
         return NextResponse.json({error: errorMessage}, {status: 500});
     }
 }
