@@ -49,7 +49,7 @@ const FormUploadFile = () => {
             const formData = new FormData();
             formData.append("file", values.file as File);
 
-            const response = await axios.post("https://66a3f4b5091a370008ee55ef--hienuploadfiles.netlify.app/api/upload", formData, {
+            const response = await axios.post("https://66a40442dd2619502548dd5f--hienuploadfiles.netlify.app/api/upload", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
