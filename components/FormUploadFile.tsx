@@ -40,7 +40,7 @@ const FormUploadFile = () => {
             file: undefined,
         },
     });
-
+    console.log(baseUrl + "/api/upload")
     const {handleSubmit, control, setValue, watch, formState: {isValid, isSubmitting}} = form;
 
     // 2. Define a submit handler.
@@ -49,7 +49,7 @@ const FormUploadFile = () => {
             const formData = new FormData();
             formData.append("file", values.file as File);
 
-            const response = await axios.post("https://66a40442dd2619502548dd5f--hienuploadfiles.netlify.app/api/upload", formData, {
+            const response = await axios.post(baseUrl + "/api/upload", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
