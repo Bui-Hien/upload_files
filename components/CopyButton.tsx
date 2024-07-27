@@ -8,21 +8,22 @@ const CopyButton = ({textToCopy}: { textToCopy: string }) => {
 
     const onCopyText = () => {
         setCopyStatus(true);
-        setTimeout(() => setCopyStatus(false), 1000);
+        setTimeout(() => setCopyStatus(false), 500);
     };
 
     return (
         <div>
             {!!textToCopy && (
-                <div>
-                    <CopyToClipboard text={textToCopy} onCopy={onCopyText}>
-
-                        <p className="mt-2 p-2 border w-[300px] rounded-md overflow-hidden text-ellipsis whitespace-nowrap cursor-copy">
+                <CopyToClipboard text={textToCopy} onCopy={onCopyText}>
+                    <div className={"relative"}>
+                        <p className="mt-2 p-2 border rounded-md overflow-hidden text-ellipsis whitespace-nowrap cursor-copy">
                             {textToCopy}
                         </p>
-                    </CopyToClipboard>
-                    {copyStatus && <p className="mt-2 text-green-500">Copied!</p>}
-                </div>
+                        {copyStatus &&
+                            <p className="absolute bottom-0 right-0 top-[-30px] mt-2 text-green-500">Copied!</p>}
+                    </div>
+
+                </CopyToClipboard>
             )}
 
         </div>
